@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
-
+    const navlinks = ["pricing", "docs", "projects"];
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20)
@@ -44,7 +44,7 @@ const Navbar = () => {
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center space-x-8">
-                    {["Home", "Pricing", "Docs", "Projects"].map((item) => (
+                    {navlinks.map((item) => (
                         <motion.div
                             key={item}
                             initial={{ opacity: 0, y: -10 }}
@@ -102,7 +102,7 @@ const Navbar = () => {
                             <X className="h-6 w-6 text-gray-900" />
                         </motion.button>
                         <div className="flex flex-col space-y-6">
-                            {["Home", "Pricing", "Docs", "Projects"].map((item, i) => (
+                            {navlinks.map((item, i) => (
                                 <motion.div
                                     key={item}
                                     initial={{ opacity: 0, x: 20 }}
