@@ -5,7 +5,7 @@ import generateQr from "./components/generateQr"
 import StrokeText from "@/components/StrokeText";
 
 const page = () => {
-  const [url, setUrl] = useState("https//suvam-dev.me")
+  const [url, setUrl] = useState("https://suvam-dev.me")
   const [qrCode, setQrCode] = useState("");
   useEffect(() => {
     if (url.trim()) {
