@@ -27,7 +27,7 @@ const page = () => {
           </div>
         </div>
         <div className="flex justify-center mt-7">
-          {qrCode && <a href={qrCode} download="QRcode.png" className="bg-white border-2 border-dashed border-slate-600 hover:border-white/50  text-black px-5  py-3 rounded-2xl hover:shadow-lg w-1/4 hover:shadow-gray-400/50 font-bold hover:scale-105 transition-all duration-400 ease-in-out hover:bg-blue-600 hover:text-white  mt-10 mb-20 flex justify-center max-md:w-1/2 max-md:mt-5 max-md:mb-5 max-md:bg-blue-600 max-md:text-white">
+          {qrCode && <a href={qrCode} download="QRcode.png" className="bg-white border-2 border-dashed border-slate-600 cursor-pointer hover:border-white/50  text-black px-5  py-3 rounded-2xl hover:shadow-lg w-1/4 hover:shadow-blue-100/50 font-bold hover:scale-105 transition-all duration-500 ease-in-out hover:bg-blue-600 hover:text-blue-200  mt-10 mb-20 flex justify-center max-md:w-1/2 max-md:mt-5 max-md:mb-5 max-md:text-sm max-md:bg-blue-600 max-md:text-white">
             Download QR Code
           </a>}
         </div>
