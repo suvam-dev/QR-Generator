@@ -3,11 +3,17 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
+import logo from "@/public/logo.jpg";
+import Image from "next/image";
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
-    const navlinks = ["pricing", "docs", "projects"];
+    const navlinks = [
+        { label: "Home", href: "/" },
+        { label: "About", href: "/about" },
+        { label: "Contact", href: "https://suvam-dev.me#contact" }
+    ];
+
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20)
@@ -30,15 +36,9 @@ const Navbar = () => {
                         whileHover={{ rotate: 10 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="16" cy="16" r="16" fill="url(#paint0_linear)" />
-                            <defs>
-                                <linearGradient id="paint0_linear" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                                    <stop stopColor="#FF9966" />
-                                    <stop offset="1" stopColor="#FF5E62" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                        <a href="https://suvam-dev.me" target="_blank">
+                            <Image src={logo} alt="logo" width={32} height={32} className="rounded-full hover:scale-110 transition-all duration-300" />
+                        </a>
                     </motion.div>
                 </div>
 
@@ -46,14 +46,14 @@ const Navbar = () => {
                 <nav className="hidden md:flex items-center space-x-8">
                     {navlinks.map((item) => (
                         <motion.div
-                            key={item}
+                            key={item.href}
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.3 }}
                             whileHover={{ scale: 1.10 }}
                         >
-                            <a href="#" className="text-sm font-semibold text-gray-300 hover:text-white transition-all duration-300 px-1">
-                                {item}
+                            <a href={item.href} className="text-sm font-semibold text-gray-300 hover:text-white transition-all duration-300 px-1">
+                                {item.label}
                             </a>
                         </motion.div>
                     ))}
@@ -68,16 +68,17 @@ const Navbar = () => {
                     whileHover={{ scale: 1 }}
                 >
                     <a
-                        href="#"
+                        href="https://github.com/suvam-dev/QR-Generator"
                         className="inline-flex items-center justify-center px-5 py-2 text-sm text-white bg-black rounded-full hover:bg-white hover:text-black transition-colors duration-300 transition-ease-in-out"
+                        target="_blank"
                     >
-                        Get Started
+                        Github
                     </a>
                 </motion.div>
 
                 {/* Mobile Menu Button */}
                 <motion.button className="md:hidden flex items-center" onClick={toggleMenu} whileTap={{ scale: 0.9 }}>
-                    <Menu className="h-6 w-6 text-gray-900" />
+                    <Menu className="h-6 w-6 text-white/80" />
                 </motion.button>
             </div>
 
@@ -85,7 +86,7 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="fixed inset-0 bg-white z-50 pt-24 px-6 md:hidden"
+                        className="fixed inset-0 bg-gray-800 z-50 pt-24 px-6 md:hidden"
                         initial={{ opacity: 0, x: "100%" }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: "100%" }}
@@ -99,19 +100,19 @@ const Navbar = () => {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.2 }}
                         >
-                            <X className="h-6 w-6 text-gray-900" />
+                            <X className="h-6 w-6 text-white" />
                         </motion.button>
-                        <div className="flex flex-col space-y-6">
+                        <div className="flex flex-col space-y-6 items-center">
                             {navlinks.map((item, i) => (
                                 <motion.div
-                                    key={item}
+                                    key={item.href}
                                     initial={{ opacity: 0, x: 20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: i * 0.1 + 0.1 }}
                                     exit={{ opacity: 0, x: 20 }}
                                 >
-                                    <a href="#" className="text-base text-gray-900 font-medium" onClick={toggleMenu}>
-                                        {item}
+                                    <a href={item.href} className="text-base text-white font-semibold" onClick={toggleMenu}>
+                                        {item.label}
                                     </a>
                                 </motion.div>
                             ))}
@@ -124,18 +125,19 @@ const Navbar = () => {
                                 className="pt-6"
                             >
                                 <a
-                                    href="#"
+                                    href="https://github.com/suvam-dev/QR-Generator"
                                     className="inline-flex items-center justify-center w-full px-5 py-3 text-base text-white bg-black rounded-full hover:bg-gray-800 transition-colors "
                                     onClick={toggleMenu}
+                                    target="_blank"
                                 >
-                                    Get Started
+                                    Github
                                 </a>
                             </motion.div>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div>
+        </div >
     )
 }
 

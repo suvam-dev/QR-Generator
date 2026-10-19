@@ -165,17 +165,17 @@ const StrokeText = ({
 
       setBox(prev =>
         prev &&
-        Math.abs(prev.x - next.x) < 0.5 &&
-        Math.abs(prev.width - next.width) < 0.5 &&
-        Math.abs(prev.y - next.y) < 0.5 &&
-        Math.abs(prev.height - next.height) < 0.5
+          Math.abs(prev.x - next.x) < 0.5 &&
+          Math.abs(prev.width - next.width) < 0.5 &&
+          Math.abs(prev.y - next.y) < 0.5 &&
+          Math.abs(prev.height - next.height) < 0.5
           ? prev
           : next
       );
     };
 
     measure();
-    document.fonts?.ready?.then(measure).catch(() => {});
+    document.fonts?.ready?.then(measure).catch(() => { });
 
     const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(measure);
     observer?.observe(root);
@@ -308,10 +308,10 @@ const StrokeText = ({
     const march =
       dashArray && marching && outline
         ? gsap.fromTo(
-            outline,
-            { strokeDashoffset: 0 },
-            { strokeDashoffset: -dashPeriod, duration: dashPeriod / (fontSize * 0.22), ease: 'none', repeat: -1 }
-          )
+          outline,
+          { strokeDashoffset: 0 },
+          { strokeDashoffset: -dashPeriod, duration: dashPeriod / (fontSize * 0.22), ease: 'none', repeat: -1 }
+        )
         : null;
 
     return () => {
