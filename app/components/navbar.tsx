@@ -11,7 +11,7 @@ const Navbar = () => {
     const navlinks = [
         { label: "Home", href: "/" },
         { label: "About", href: "/about" },
-        { label: "Contact", href: "https://suvam-dev.me#contact" }
+        { label: "Contact", href: "/contact" }
     ];
 
     useEffect(() => {

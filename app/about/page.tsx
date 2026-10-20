@@ -5,9 +5,9 @@ const page = () => {
     return (
         <div className="min-h-screen flex flex-col justify-between">
             <div className="flex flex-col px-4 items-center">
-                <Navbar />
 
-                <h1 className="text-6xl md:text-9xl font-bold mt-10 max-md:mt-3 text-center">About</h1>
+                <Navbar />
+                <h1 className="text-6xl md:text-9xl font-bold mt-10 max-md:m-3 text-center">About</h1>
 
                 <div className="bg-white/10 border border-white/20 backdrop-blur-md rounded-3xl p-6 md:p-8 mt-10 max-w-2xl w-full text-center">
                     <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
